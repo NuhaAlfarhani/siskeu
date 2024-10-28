@@ -58,7 +58,9 @@ jobs:
         sed -i 's/MAIL_MAILER=.*/MAIL_MAILER=log/' .env
 
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: 
+        composer update
+        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
     - name: Generate key
       run: php artisan key:generate
