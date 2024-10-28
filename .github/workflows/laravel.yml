@@ -17,7 +17,7 @@ jobs:
         env:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: siskeu
-          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
           MYSQL_PASSWORD: password
         options: >-
           --health-cmd="mysqladmin ping --silent"
