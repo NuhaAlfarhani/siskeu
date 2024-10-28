@@ -32,7 +32,8 @@ jobs:
 
     - uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: '8.2'
+        tools: composer
 
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -56,10 +57,9 @@ jobs:
         sed -i 's/QUEUE_CONNECTION=.*/QUEUE_CONNECTION=database/' .env
         sed -i 's/CACHE_STORE=.*/CACHE_STORE=database/' .env
         sed -i 's/MAIL_MAILER=.*/MAIL_MAILER=log/' .env
-
+        
     - name: Install Dependencies
-      run: 
-        composer update
+      run: composer install
 
     - name: Generate key
       run: php artisan key:generate
